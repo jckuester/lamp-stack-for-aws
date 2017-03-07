@@ -1,0 +1,42 @@
+{
+  "builders": [{
+    "name": "apache2",
+    "type": "amazon-ebs",
+    "region": "{{user `region`}}",
+    "instance_type": "t2.micro",
+    "ami_name": "{{build_name}}-{{user `build_version`}}",
+    "ssh_username": "ubuntu",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "*ubuntu-trusty-14.04-amd64-server-*",
+        "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    }
+  }],
+  "provisioners": [{
+      "type": "chef-solo",
+      "only": ["apache2"],
+      "cookbook_paths": ["cookbooks"],
+      "run_list": [
+        "apt",
+        "apache2",
+        "apache2::mod_php5",
+        "php",
+        "lamp-website"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "index.php",
+      "destination": "/tmp/index.php"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mv /tmp/index.php /var/www/index.php"
+      ]
+    }]
+}
