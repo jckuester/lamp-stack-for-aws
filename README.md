@@ -1,16 +1,18 @@
 
-# Requirements
+# A LAMP Stack for AWS
+
+## Requirements
 
 * AWS Account (free tier)
 * Packer v0.12.3
 
-# Before getting started
+## Getting started
 
 1. `aws configure --profile lamp set aws_access_key_id YOUR_AWS_ACCESS_KEY_ID`
 2. `aws configure --profile lamp set aws_secret_access_key YOUR_AWS_SECRET_ACCESS_KEY`
 3. `aws --profile lamp configure set region us-west-2`
 
-# Packer
+## Packer
 
 ```
 cd packer/
@@ -21,3 +23,9 @@ cd packer/
 packer validate lamp.json
 
 
+## Terraform
+
+```
+cd terraform/
+terraform apply
+```
