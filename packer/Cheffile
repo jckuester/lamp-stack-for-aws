@@ -5,3 +5,7 @@ cookbook 'apache2', '3.2.2'
 cookbook 'php', '2.2.1'
 cookbook 'mysql', '8.2.0'
 cookbook 'consul', '2.3.0'
+
+cookbook 'lamp-for-aws-cookbook',
+  :git => 'https://github.com/jckuester/lamp-for-aws-cookbook.git',
+  :ref => 'develop'

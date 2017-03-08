@@ -25,7 +25,7 @@
         "apache2",
         "apache2::mod_php5",
         "php",
-        "lamp-website"
+        "lamp-for-aws-cookbook"
       ]
     },
     {
