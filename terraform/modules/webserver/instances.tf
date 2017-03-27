@@ -21,7 +21,7 @@ resource "aws_launch_configuration" "webserver" {
   instance_type = "t2.micro"
   security_groups = [
     "${aws_security_group.webserver.id}"
- ]
+  ]
 
   lifecycle {
     create_before_destroy = true

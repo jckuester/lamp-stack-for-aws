@@ -1,10 +1,10 @@
-
-# A LAMP Stack for AWS
+# Demo: A LAMP Stack for AWS
 
 ## Requirements
 
 * AWS Account (free tier)
 * Packer v0.12.3
+* Terraform v0.8.5
 
 ## Getting started
 
@@ -16,16 +16,22 @@
 
 ```
 cd packer/
-`librarian-chef install`
+librarian-chef install
 ./build_amis.sh 1
 ```
 
-packer validate lamp.json
-
-
 ## Terraform
+
+Create LAMP Stack:
 
 ```
 cd terraform/
 terraform apply
+```
+
+Tear LAMP Stack down:
+
+```
+cd terraform/
+terraform destroy
 ```
