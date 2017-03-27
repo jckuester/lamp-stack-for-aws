@@ -21,9 +21,19 @@ module "webserver" {
 
   vpc_id = "${aws_vpc.lamp.id}"
   vpc_cidr = "${aws_vpc.lamp.cidr_block}"
-  region = "us-west-2"
   ami_owner_id = "${data.aws_caller_identity.current.account_id}"
   azs = "${var.azs}"
+}
+
+module "database" {
+  source = "modules/database"
+
+  vpc_id = "${aws_vpc.lamp.id}"
+  vpc_cidr = "${aws_vpc.lamp.cidr_block}"
+  azs = "${var.azs}"
+
+  # other module dependencies
+  webserver_cidrs = "${module.webserver.webserver_cidrs}"
 }
 
 variable "azs" {
