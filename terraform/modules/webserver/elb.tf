@@ -12,6 +12,6 @@ resource "aws_elb" "webserver" {
   }
 
   tags {
-    Name = "LAMP: Webserver"
+    Name = "${var.webserver_tag}"
   }
 }

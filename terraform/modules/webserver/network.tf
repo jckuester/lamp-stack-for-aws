@@ -5,7 +5,7 @@ resource "aws_subnet" "webserver" {
   availability_zone = "${element(var.azs, count.index)}"
 
   tags {
-    Name = "LAMP: Webserver"
+    Name = "${var.webserver_tag}"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "webserver" {
   vpc_id = "${var.vpc_id}"
 
   tags {
-    Name = "LAMP: Webserver"
+    Name = "${var.webserver_tag}"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_route_table" "webserver" {
   }
 
   tags {
-    Name = "LAMP: Webserver"
+    Name = "${var.webserver_tag}"
   }
 }
 

@@ -10,7 +10,7 @@ resource "aws_autoscaling_group" "webserver" {
 
   tag {
     key = "Name"
-    value = "LAMP: Webserver"
+    value = "${var.webserver_tag}"
     propagate_at_launch = true
   }
 }

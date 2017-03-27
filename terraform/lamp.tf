@@ -23,6 +23,7 @@ module "webserver" {
   vpc_cidr = "${aws_vpc.lamp.cidr_block}"
   ami_owner_id = "${data.aws_caller_identity.current.account_id}"
   azs = "${var.azs}"
+  webserver_tag = "${var.webserver_tag}"
 }
 
 module "database" {
@@ -34,9 +35,4 @@ module "database" {
 
   # other module dependencies
   webserver_cidrs = "${module.webserver.webserver_cidrs}"
-}
-
-variable "azs" {
-  type = "list"
-  default = ["us-west-2a", "us-west-2b"]
 }

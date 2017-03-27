@@ -18,7 +18,7 @@ resource "aws_security_group" "webserver" {
   }
 
   tags {
-    Name = "LAMP: Webserver"
+    Name = "${var.webserver_tag}"
   }
 }
 
@@ -42,6 +42,6 @@ resource "aws_security_group" "elb" {
   }
 
   tags {
-    Name = "LAMP: ELB"
+    Name = "${var.webserver_tag} ELB"
   }
 }
