@@ -4,8 +4,8 @@ resource "aws_security_group" "webserver" {
   vpc_id = "${var.vpc_id}"
 
   ingress {
-    from_port = 0
-    to_port = 65535
+    from_port = 80
+    to_port = 80
     protocol = "tcp"
     cidr_blocks = ["${aws_subnet.webserver.*.cidr_block}"]
   }
@@ -28,8 +28,8 @@ resource "aws_security_group" "elb" {
   vpc_id = "${var.vpc_id}"
 
   ingress {
-    from_port = 0
-    to_port = 65535
+    from_port = 80
+    to_port = 80
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
