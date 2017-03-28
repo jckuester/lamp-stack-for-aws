@@ -13,12 +13,12 @@ data "template_cloudinit_config" "readmodel" {
 
   part {
     content_type = "text/part-handler"
-    content = "${file("${path.module}/../../part-handler-text.py")}"
+    content = "${file("${path.module}/../part-handler-text.py")}"
   }
 
   part {
     content_type = "text/plain-base64"
-    filename = "/etc/motd"
+    filename = "/var/www/index.php"
     content = "${base64encode("${data.template_file.index_php.rendered}")}"
   }
 }
@@ -44,6 +44,8 @@ resource "aws_launch_configuration" "webserver" {
   name_prefix = "webserver-"
   image_id = "${data.aws_ami.webserver.id}"
   instance_type = "t2.micro"
+  key_name = "${aws_key_pair.webserver.key_name}"
+  user_data = "${data.template_cloudinit_config.readmodel.rendered}"
   security_groups = [
     "${aws_security_group.webserver.id}"
   ]
