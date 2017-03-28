@@ -1,7 +1,7 @@
 provider "aws" {
-  region = "us-west-2"
+  region = "${var.REGION}"
   # default location is $HOME/.aws/credentials
-  profile = "lamp"
+  profile = "${var.PROFILE}"
 }
 
 data "aws_caller_identity" "current" {
@@ -9,7 +9,7 @@ data "aws_caller_identity" "current" {
 }
 
 resource "aws_vpc" "lamp" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "${var.vpc_cidr_block}"
 
   tags {
     Name = "LAMP"

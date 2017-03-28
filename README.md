@@ -8,9 +8,11 @@
 
 ## Getting started
 
-1. `aws configure --profile lamp set aws_access_key_id YOUR_AWS_ACCESS_KEY_ID`
-2. `aws configure --profile lamp set aws_secret_access_key YOUR_AWS_SECRET_ACCESS_KEY`
-3. `aws --profile lamp configure set region us-west-2`
+Create a AWS profile for your personal account:
+
+1. `aws configure --profile personal set aws_access_key_id YOUR_AWS_ACCESS_KEY_ID`
+2. `aws configure --profile personal set aws_secret_access_key YOUR_AWS_SECRET_ACCESS_KEY`
+3. `aws --profile personal configure set region us-west-2`
 
 ## Packer
 
@@ -26,12 +28,12 @@ Create LAMP Stack:
 
 ```
 cd terraform/
-terraform apply
+./terraform.sh personal apply
 ```
 
 Tear LAMP Stack down:
 
 ```
 cd terraform/
-terraform destroy
+./terraform.sh personal destroy
 ```
