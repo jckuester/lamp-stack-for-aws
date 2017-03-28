@@ -7,7 +7,7 @@
 <h1>LAMP Stack Reloaded: An AWS example</h1>
 
 <?php
-$servername = "tf-001473eca1515e7fe20d6e2330.cbca6q4otsut.us-west-2.rds.amazonaws.com";
+$servername = "${db_server_address}";
 $username = "lamp";
 $password = "lamp1234";
 $db = "lamp";

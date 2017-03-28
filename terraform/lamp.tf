@@ -24,6 +24,7 @@ module "webserver" {
   ami_owner_id = "${data.aws_caller_identity.current.account_id}"
   azs = "${var.azs}"
   webserver_tag = "${var.webserver_tag}"
+  db_server_address = "${module.database.server_address}"
 }
 
 module "database" {

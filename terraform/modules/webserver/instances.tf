@@ -1,3 +1,28 @@
+data "template_file" "index_php" {
+  template = "${file("${path.module}/index.php")}"
+
+  vars {
+    db_server_address = "${var.db_server_address}"
+  }
+}
+
+
+data "template_cloudinit_config" "readmodel" {
+  gzip          = true
+  base64_encode = false
+
+  part {
+    content_type = "text/part-handler"
+    content = "${file("${path.module}/../../part-handler-text.py")}"
+  }
+
+  part {
+    content_type = "text/plain-base64"
+    filename = "/etc/motd"
+    content = "${base64encode("${data.template_file.index_php.rendered}")}"
+  }
+}
+
 resource "aws_autoscaling_group" "webserver" {
   name = "${aws_launch_configuration.webserver.name}"
   launch_configuration = "${aws_launch_configuration.webserver.name}"

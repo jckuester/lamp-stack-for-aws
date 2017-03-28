@@ -27,16 +27,5 @@
         "php",
         "lamp-for-aws-cookbook"
       ]
-    },
-    {
-      "type": "file",
-      "source": "index.php",
-      "destination": "/tmp/index.php"
-    },
-    {
-      "type": "shell",
-      "inline": [
-        "sudo mv /tmp/index.php /var/www/index.php"
-      ]
     }]
 }
