@@ -3,12 +3,13 @@
 ## Requirements
 
 * AWS Account (free tier)
+* aws-cli 1.10.33
 * Packer v0.12.3
 * Terraform v0.8.5
 
 ## Getting started
 
-Create a AWS profile for your personal account:
+Create an AWS profile for your personal account:
 
 1. `aws configure --profile personal set aws_access_key_id YOUR_AWS_ACCESS_KEY_ID`
 2. `aws configure --profile personal set aws_secret_access_key YOUR_AWS_SECRET_ACCESS_KEY`
@@ -31,7 +32,7 @@ cd terraform/
 ./terraform.sh personal apply
 ```
 
-Tear LAMP Stack down:
+Tear down LAMP Stack:
 
 ```
 cd terraform/
