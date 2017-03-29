@@ -2,7 +2,7 @@ resource "aws_subnet" "webserver" {
   vpc_id = "${var.vpc_id}"
   cidr_block = "${cidrsubnet(var.vpc_cidr, 8, count.index + 1)}"
   count = "${length(var.azs)}"
-  availability_zone = "${element(var.azs, count.index)}"
+  availability_zone = "${format("%s%s", var.region, element(var.azs, count.index))}"
 
   tags {
     Name = "${var.webserver_tag}"

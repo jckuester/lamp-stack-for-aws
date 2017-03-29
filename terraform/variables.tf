@@ -8,7 +8,7 @@ variable "database_tag" {
 
 variable "azs" {
   type = "list"
-  default = ["us-west-2a", "us-west-2b"]
+  default = ["a", "b"]
 }
 
 variable "vpc_cidr_block" {
