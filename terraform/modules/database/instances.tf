@@ -13,6 +13,6 @@ resource "aws_db_instance" "database" {
   availability_zone = "us-west-2a"
   vpc_security_group_ids = ["${aws_security_group.database.id}"]
   tags {
-    Name = "LAMP: Database"
+    Name = "${var.database_tag}"
   }
 }

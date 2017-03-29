@@ -1,11 +1,11 @@
 resource "aws_subnet" "database" {
   vpc_id = "${var.vpc_id}"
-  cidr_block = "${cidrsubnet(var.vpc_cidr, 8, count.index + 3)}"
+  cidr_block = "${cidrsubnet(var.vpc_cidr, 8, count.index + 10)}"
   count = "${length(var.azs)}"
   availability_zone = "${element(var.azs, count.index)}"
 
   tags {
-    Name = "LAMP: Database"
+    Name = "${var.database_tag}"
   }
 }
 
@@ -14,6 +14,6 @@ resource "aws_db_subnet_group" "database" {
   subnet_ids = ["${aws_subnet.database.*.id}"]
 
   tags {
-    Name = "LAMP: Database"
+    Name = "${var.database_tag}"
   }
 }

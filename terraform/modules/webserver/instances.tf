@@ -57,7 +57,7 @@ resource "aws_launch_configuration" "webserver" {
 
 data "aws_ami" "webserver" {
   most_recent = true
-  owners = ["${var.ami_owner_id}"]
+  owners = ["${data.aws_caller_identity.current.account_id}"]
 
   filter {
     name = "name"
@@ -78,4 +78,8 @@ data "aws_ami" "webserver" {
     name = "is-public"
     values = ["false"]
   }
+}
+
+data "aws_caller_identity" "current" {
+  # no arguments
 }
