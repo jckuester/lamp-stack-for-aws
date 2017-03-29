@@ -1,5 +1,10 @@
 # Demo: A LAMP Stack for AWS
 
+<p>
+ <img src="img/lamp.png" alt="LAMP Stack architecture">   
+ <em>Figure 1: LAMP Stack architecture</em>
+</p>
+
 ## Requirements
 
 * AWS Account (free tier)
@@ -29,6 +34,8 @@ Create LAMP Stack:
 
 ```
 cd terraform/
+./terraform.sh personal get
+./terraform.sh personal plan
 ./terraform.sh personal apply
 ```
 
