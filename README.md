@@ -10,7 +10,8 @@
 * AWS Account (free tier)
 * aws-cli 1.10.33
 * Packer v0.12.3
-* Terraform v0.8.5
+* Terraform v0.10.0
+* librarian-chef 0.0.4
 
 ## Getting started
 
@@ -34,7 +35,7 @@ Create LAMP Stack:
 
 ```
 cd terraform/
-./terraform.sh personal get
+./terraform.sh personal init
 ./terraform.sh personal plan
 ./terraform.sh personal apply
 ```

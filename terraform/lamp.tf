@@ -1,4 +1,6 @@
 provider "aws" {
+  version = ">= 0.1.4"
+
   region = "${var.REGION}"
   # default location is $HOME/.aws/credentials
   profile = "${var.PROFILE}"
