@@ -1,9 +1,9 @@
 provider "aws" {
   version = ">= 0.1.4"
 
-  region = "${var.REGION}"
   # default location is $HOME/.aws/credentials
-  profile = "${var.PROFILE}"
+  profile = "${var.profile}"
+  region = "${var.region}"
 }
 
 resource "aws_vpc" "lamp" {
@@ -20,7 +20,7 @@ module "webserver" {
   vpc_id = "${aws_vpc.lamp.id}"
   vpc_cidr = "${aws_vpc.lamp.cidr_block}"
   azs = "${var.azs}"
-  region = "${var.REGION}"
+  region = "${var.region}"
   webserver_tag = "${var.webserver_tag}"
 
   # other module dependencies
@@ -33,7 +33,7 @@ module "database" {
   vpc_id = "${aws_vpc.lamp.id}"
   vpc_cidr = "${aws_vpc.lamp.cidr_block}"
   azs = "${var.azs}"
-  region = "${var.REGION}"
+  region = "${var.region}"
   database_tag = "${var.database_tag}"
 
   # other module dependencies

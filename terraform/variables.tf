@@ -15,6 +15,6 @@ variable "vpc_cidr_block" {
   default = "10.0.0.0/16"
 }
 
-variable "PROFILE" { }
+variable "profile" {}
 
-variable "REGION" { }
+variable "region" {}

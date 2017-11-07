@@ -1,4 +1,7 @@
-# Demo: A LAMP Stack for AWS
+#  LAMP stack for AWS
+
+The infrastructure of a good old LAMP stack is used to explain 
+how a minimal Terraform project looks like in practice.
 
 <p>
  <img src="img/lamp.png" alt="LAMP Stack architecture">   
@@ -35,14 +38,18 @@ Create LAMP Stack:
 
 ```
 cd terraform/
-./terraform.sh personal init
-./terraform.sh personal plan
-./terraform.sh personal apply
+terraform init
+terraform get
+terraform apply \
+    -var profile=myprofile \
+    -var region="us-west-2" 
 ```
 
 Tear down LAMP Stack:
 
 ```
 cd terraform/
-./terraform.sh personal destroy
+terraform destroy \
+    -var profile=myprofile \
+    -var region="us-west-2"
 ```
