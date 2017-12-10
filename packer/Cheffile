@@ -4,6 +4,6 @@ cookbook 'apt', '6.1.2'
 cookbook 'apache2', '3.2.2'
 cookbook 'php', '4.2.0'
 
-cookbook 'lamp-for-aws-cookbook',
-  :git => 'https://github.com/jckuester/lamp-for-aws-cookbook.git',
+cookbook 'lamp-stack-for-aws-cookbook',
+  :git => 'https://github.com/cloudetc/lamp-stack-for-aws-cookbook.git',
   :ref => 'develop'
