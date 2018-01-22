@@ -76,8 +76,8 @@ in your browser of choice and have a look at the test website. It is able to add
 using PHP:
 
 <p>
- <img src="img/webpage.png" alt="Test website of the LAMP Stack">   
- <em>Figure 1: LAMP Stack architecture</em>
+ <img src="img/website.png" alt="Test website of the LAMP Stack">   
+ <em>Figure 2: Test website of the LAMP Stack</em>
 </p>
 
 ## Tear down LAMP stack
