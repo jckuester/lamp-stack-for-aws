@@ -29,7 +29,7 @@ Create an AWS profile for your personal account:
 ```
 cd packer/
 librarian-chef install
-./build_amis.sh 1
+./build_amis.sh personal 1
 ```
 
 ## Terraform
