@@ -41,7 +41,7 @@ cd terraform/
 terraform init
 terraform get
 terraform apply \
-    -var profile=myprofile \
+    -var profile=personal \
     -var region="us-west-2" 
 ```
 
@@ -50,6 +50,6 @@ Tear down LAMP Stack:
 ```
 cd terraform/
 terraform destroy \
-    -var profile=myprofile \
+    -var profile=personal \
     -var region="us-west-2"
 ```
