@@ -1,12 +1,15 @@
-#  LAMP Stack for AWS
+#  LAMP Stack (for AWS)
 
-The infrastructure of a good old LAMP stack is used to explain 
-how a minimal Terraform project looks like in practice.
+A good old LAMP Stack is used to showcase 
+how a Terraform project looks like in practice.
 
 <p>
- <img src="img/lamp.png" alt="LAMP Stack architecture">   
- <em>Figure 1: LAMP Stack architecture</em>
+ <img src="img/lamp.png" alt="LAMP Stack infrastructure in AWS">   
+ <em>Figure 1: LAMP Stack infrastructure in AWS</em>
 </p>
+
+*Note: Checkout [v0.1](https://github.com/cloudetc/lamp-stack-for-aws/releases/tag/v0.1) of this repo to see the version belonging to the Heise Developer Article
+ [Terraform in der Praxis: LAMP-Stack in der Cloud](https://www.heise.de/developer/artikel/Terraform-in-der-Praxis-LAMP-Stack-in-der-Cloud-3961117.html).*
 
 ## Requirements
 
