@@ -30,8 +30,8 @@ resource "aws_autoscaling_group" "webserver" {
   max_size = "${4 * length(var.azs)}"
   min_size = 2
 
-  vpc_zone_identifier = ["${aws_subnet.webserver.*.id}"]
-  load_balancers = [ "${aws_elb.webserver.name}" ]
+  vpc_zone_identifier = ["${var.subnet_ids}"]
+  load_balancers = ["${aws_elb.webserver.name}"]
 
   tag {
     key = "Name"

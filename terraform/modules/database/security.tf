@@ -7,7 +7,7 @@ resource "aws_security_group" "database" {
     from_port = 3306
     to_port = 3306
     protocol = "tcp"
-    cidr_blocks = ["${split(", ", "${var.webserver_cidrs}")}"]
+    cidr_blocks = ["${var.webserver_cidrs}"]
   }
 
   egress {
