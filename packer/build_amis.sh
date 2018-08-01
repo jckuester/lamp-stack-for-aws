@@ -11,7 +11,7 @@ function main {
     local region=$(aws --profile $profile configure get region || true)
 
     if [ -z "$region" ]; then
-        echo "Error: region for profile 'lamp' not set"
+        echo "Error: region for profile $profile not set"
         exit 1
     fi
 

@@ -59,7 +59,6 @@ Create infrastructure of the LAMP Stack in the cloud:
 ```
 cd terraform/
 terraform init
-terraform get
 terraform apply \
     -var profile=myaccount \
     -var region="us-west-2" 

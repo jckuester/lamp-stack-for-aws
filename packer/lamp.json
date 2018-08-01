@@ -18,6 +18,7 @@
   }],
   "provisioners": [{
       "type": "chef-solo",
+      "version": "12.22.5",
       "only": ["apache2"],
       "cookbook_paths": ["cookbooks"],
       "run_list": [
