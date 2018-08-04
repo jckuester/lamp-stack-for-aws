@@ -1,11 +1,17 @@
 #  LAMP Stack (for AWS)
 
-A good old LAMP Stack is used to showcase 
-how a Terraform project looks like in practice.
+The infrastructure (see Fig. 1) of a good old LAMP Stack is used as an (not too trivial, but also not too complex) example
+to showcase how a Terraform project is setup in practice. We use [terragrunt](https://github.com/gruntwork-io/terragrunt)
+to show how to deploy to different environments (QA, PROD, etc) while keeping your code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 <p>
  <img src="img/lamp.png" alt="LAMP Stack infrastructure in AWS">   
  <em>Figure 1: LAMP Stack infrastructure in AWS</em>
+</p>
+
+<p>
+ <img src="img/website.png" alt="Test website of the LAMP Stack when up and running">   
+ <em>Figure 2: Test website of the LAMP Stack when up and running</em>
 </p>
 
 *Note: Checkout [v0.1](https://github.com/cloudetc/lamp-stack-for-aws/releases/tag/v0.1) of this repo to see the version belonging to the Heise Developer Article
@@ -19,34 +25,27 @@ how a Terraform project looks like in practice.
 * Terraform v0.10.0
 * librarian-chef 0.0.4
 
-## Getting started
+## Deploy LAMP stack
 
-[Create a profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) for your AWS account:
+We use Terraform and [Packer](https://www.packer.io) to do so. It takes only 2 "steps" to bring up the complete LAMP stack.
 
-1. `aws configure --profile myaccount set aws_access_key_id YOUR_AWS_ACCESS_KEY_ID`
-2. `aws configure --profile myaccount set aws_secret_access_key YOUR_AWS_SECRET_ACCESS_KEY`
-3. `aws --profile myaccount configure set region us-west-2`
+As a prerequisite, [create a profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) 
+for your AWS account and name it `myaccount`.
 
-## Bring up LAMP stack
-
-We use Packer and Terraform to do so! 
-
-It takes only 2 "steps" to create the complete LAMP stack.
-
-### Provision webservers
-
-To create the webservers for the LAMP stack (orange boxes in Fig. 1), we use [Packer](https://www.packer.io):
+### Create webserver image
 
 ```
-cd packer/
-librarian-chef install
-./build_amis.sh myaccount 1
+AWS_PROFILE="myaccount" packer build \
+        -var "region=us-west-2" \
+        -var "build_version=1" \
+        packer.json
 ```
+
+Packer creates machine images for the webservers of the LAMP stack (orange boxes in Fig. 1).
 
 Packer first launches an EC2 instance, then installs apache2 and PHP on it, and finally saves
 a snapshot of that provisioned instance as an Amazon machine image (AMI). 
-This Packer details are configured in the [lamp.json](packer/lamp.json).
-
+This Packer details are configured in the [lamp.json](packer.json).
  
 The AMI can be used to spin up several webservers of the exact same kind. 
 This is less error-prone (single point of testing) and faster in scaling than 
@@ -54,14 +53,12 @@ provisioning each single EC2 instance after launching it.
 
 ### Create infrastructure
 
-Create infrastructure of the LAMP Stack in the cloud:
+Deploy infrastructure of the LAMP Stack to AWS for different environments (<environment> can be qa or prod):
 
 ```
-cd terraform/
-terraform init
-terraform apply \
-    -var profile=myaccount \
-    -var region="us-west-2" 
+cd terraform/<environment>
+terragrunt init
+AWS_PROFILE=myaccount terragrunt apply
 ```
 
 The output you will see is similar to the following:
@@ -74,19 +71,12 @@ The output you will see is similar to the following:
     
  
 Open `webserver-elb-1983426762.us-west-2.amazonaws.com` (which is different in your case and each time you create the LAMP Stack)
-in your browser of choice and have a look at the test website. It is able to add to and read data from a database
-using PHP:
-
-<p>
- <img src="img/website.png" alt="Test website of the LAMP Stack">   
- <em>Figure 2: Test website of the LAMP Stack</em>
-</p>
+in your browser and have a play with the test website (see Fig. 2), which adds and reads data from a database using PHP.
 
 ## Tear down LAMP stack
 
 ```
-cd terraform/
-terraform destroy \
-    -var profile=myaccount \
-    -var region="us-west-2"
+cd terraform/<environment>
+terragrunt init
+AWS_PROFILE=myaccount terragrunt destroy
 ```
