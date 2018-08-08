@@ -1,8 +1,8 @@
 #  LAMP Stack (for AWS)
 
 The infrastructure (see Fig. 1) of a good old LAMP Stack is used as an (not too trivial, but also not too complex) example
-to showcase how a Terraform project is setup in practice. We use [terragrunt](https://github.com/gruntwork-io/terragrunt)
-to show how to deploy to different environments (QA, PROD, etc) while keeping your code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+to showcase how to setup a Terraform project. [Terragrunt](https://github.com/gruntwork-io/terragrunt) is used to deploy 
+to different environments (QA, PROD, etc) while keeping code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 <p>
  <img src="img/lamp.png" alt="LAMP Stack infrastructure in AWS">   
@@ -56,7 +56,7 @@ provisioning each single EC2 instance after launching it.
 Deploy infrastructure of the LAMP Stack to AWS for different environments (<environment> can be qa or prod):
 
 ```
-cd terraform/<environment>
+cd <environment>/
 terragrunt init
 AWS_PROFILE=myaccount terragrunt apply
 ```
@@ -76,7 +76,7 @@ in your browser and have a play with the test website (see Fig. 2), which adds a
 ## Tear down LAMP stack
 
 ```
-cd terraform/<environment>
+cd <environment>/
 terragrunt init
 AWS_PROFILE=myaccount terragrunt destroy
 ```

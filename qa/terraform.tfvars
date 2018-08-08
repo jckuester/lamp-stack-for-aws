@@ -32,7 +32,7 @@ terragrunt = {
         "-var",
         "tfstate_bucket=terraform-state-659553998200",
         "-var",
-        "profile=private"
+        "profile=myaccount"
       ]
     }
   }

@@ -1,6 +1,6 @@
 terragrunt = {
   terraform {
-    source = "git@github.com:cloudetc/terraform-modules.git//vpc?ref=v0.0.1"
+    source = "git@github.com:cloudetc/terraform-modules.git//vpc?ref=v0.0.3"
   }
 
   include = {

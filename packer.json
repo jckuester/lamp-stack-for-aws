@@ -1,9 +1,9 @@
 {
   "builders": [{
-    "name": "apache2",
+    "name": "webserver",
     "type": "amazon-ebs",
     "region": "{{user `region`}}",
-    "instance_type": "t2.micro",
+    "instance_type": "t2.nano",
     "ami_name": "{{build_name}}-{{user `build_version`}}",
     "ssh_username": "ubuntu",
     "source_ami_filter": {
@@ -19,7 +19,6 @@
   "provisioners": [{
       "type": "chef-solo",
       "version": "12.22.5",
-      "only": ["apache2"],
       "cookbook_paths": ["cookbooks"],
       "run_list": [
         "apt",
